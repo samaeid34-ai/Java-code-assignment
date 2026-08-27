@@ -1,0 +1,59 @@
+package day5;
+import java.util.Scanner;
+
+public class Grades {
+    private static int [] grades;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of grades ");
+//        int numberOfGrades =
+        grades = new int[scanner.nextInt()];
+        getGrades(scanner);
+        printGrades();
+        System.out.println("The average is "+String.format("%.2f",calculateAvg()));
+        System.out.println("The highest grade is "+getHighest());
+        System.out.println("The Lowest grade is "+getLowest());
+        scanner.close();
+    }
+    public static void getGrades(Scanner scanner){
+        for (int i=0;i< grades.length;i++){
+            System.out.println("Enter grade "+(i+1));
+            grades[i] = scanner.nextInt();
+        }
+    }
+    public static void printGrades(){
+        for(int grade:grades){
+            System.out.println(grade);
+        }
+    }
+
+    public static double calculateAvg(){
+        return calculateSum()/grades.length;
+    }
+
+    public static int calculateSum(){
+        int total=0;
+        for (int grade:grades){
+            total+=grade;
+        }
+        return total;
+    }
+    public static int getHighest(){
+        int highest = grades[0];
+        for(int grade:grades){
+            if(grade>highest){
+                highest=grade;
+            }
+        }
+        return highest;
+    }
+    public static int getLowest(){
+        int lowest = grades[0];
+        for(int grade:grades){
+            if(grade>lowest){
+                lowest=grade;
+            }
+        }
+        return lowest;
+    }
+}
